@@ -289,46 +289,28 @@ class MapScreenState extends State<ProfilePage>
     super.dispose();
   }
 
-  // Widget _getEditIcon() {
-  //   return new Expanded(
-  //     child: Padding(
-  //       padding: EdgeInsets.only(left: 10.0),
-  //       child: Container(
-  //           child: new RaisedButton(
-  //         child: new Text("เพิ่มข้อมูล"),
-  //         textColor: Colors.white,
-  //         color: Colors.green,
-  //         onPressed: () async {
-  //           await postProfile().then((value) {
-  //             print(value);
-  //             var registerSuccess = new MaterialPageRoute(
-  //               builder: (BuildContext contex) =>
-  //                   Home(name: nameController.text),
-  //             );
-  //             Navigator.of(context).push(registerSuccess);
-  //             setState(() {
-  //               _status = true;
-  //               FocusScope.of(context).requestFocus(new FocusNode());
-  //             });
-  //           });
-  //         },
-  //         shape: new RoundedRectangleBorder(
-  //             borderRadius: new BorderRadius.circular(20.0)),
-  //       )),
-  //     ),
-  //     flex: 2,
-  //   );
-  // }
   Widget _getEditIcon() {
     return new Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 10.0),
         child: Container(
             child: new RaisedButton(
-          child: new Text("สร้าง PDF"),
+          child: new Text("เพิ่มข้อมูล"),
           textColor: Colors.white,
           color: Colors.green,
-          onPressed: () {},
+          onPressed: () async {
+            await postProfile().then((value) {
+              print(value);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+              setState(() {
+                _status = true;
+                FocusScope.of(context).requestFocus(new FocusNode());
+              });
+            });
+          },
           shape: new RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(20.0)),
         )),
@@ -336,4 +318,21 @@ class MapScreenState extends State<ProfilePage>
       flex: 2,
     );
   }
+  // Widget _getEditIcon() {
+  //   return new Expanded(
+  //     child: Padding(
+  //       padding: EdgeInsets.only(left: 10.0),
+  //       child: Container(
+  //           child: new RaisedButton(
+  //         child: new Text("สร้าง PDF"),
+  //         textColor: Colors.white,
+  //         color: Colors.green,
+  //         onPressed: () {},
+  //         shape: new RoundedRectangleBorder(
+  //             borderRadius: new BorderRadius.circular(20.0)),
+  //       )),
+  //     ),
+  //     flex: 2,
+  //   );
+  // }
 }
