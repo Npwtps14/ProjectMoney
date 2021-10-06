@@ -9,6 +9,7 @@ import 'package:day_manager/customWidgets/textButton.dart';
 import 'package:day_manager/main.dart';
 import 'package:day_manager/view/transactionList.dart';
 import 'package:day_manager/view/user.dart';
+import 'package:day_manager/view/web.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String number = "name";
+  String number = "";
   var aaa = "";
 
   @override
@@ -112,17 +113,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         // ),
                         RichText(
                           overflow: TextOverflow.ellipsis,
-                  strutStyle: StrutStyle(fontSize: 12.0),
-                  text:new TextSpan(
-                          text : number.toString(),
-                          style: TextStyle(
-                            color: blackColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            decoration: TextDecoration.none,
+                          strutStyle: StrutStyle(fontSize: 12.0),
+                          text: new TextSpan(
+                            text: number.toString(),
+                            style: TextStyle(
+                              color: blackColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              decoration: TextDecoration.none,
+                            ),
                           ),
-                        ),)
-                        
+                        )
                       ],
                     ),
                   ),
@@ -167,7 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ProfilePage()),
+                                      builder: (context) => WebViewExample()),
                                 );
                               },
                             ),

@@ -1,3 +1,4 @@
+import 'package:day_manager/view/homeScreen.dart';
 import 'controller/reportController.dart';
 import 'controller/transactionController.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'controller/transDetailController.dart';
 import 'view/home.dart';
 
 void main() => runApp(MyApp());
+
 
 class MyApp extends StatelessWidget {
   @override

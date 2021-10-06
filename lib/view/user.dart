@@ -3,6 +3,7 @@ import 'package:day_manager/view/homeScreen.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:restart_app/restart_app.dart';
 
 import '../main.dart';
 import 'home.dart';
@@ -301,10 +302,7 @@ class MapScreenState extends State<ProfilePage>
           onPressed: () async {
             await postProfile().then((value) {
               print(value);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-              );
+              Restart.restartApp();
               setState(() {
                 _status = true;
                 FocusScope.of(context).requestFocus(new FocusNode());
