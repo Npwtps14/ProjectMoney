@@ -20,7 +20,8 @@ class WebViewExampleState extends State<WebViewExample> {
   Widget build(BuildContext context) {
     return WebView(
       javascriptMode: JavascriptMode.unrestricted,
-      initialUrl: 'https://facebook.com',
+      initialUrl: 'https://www.freepdfconvert.com/',
+      debuggingEnabled: true,
     );
   }
 }
