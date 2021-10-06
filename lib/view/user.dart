@@ -1,4 +1,5 @@
 import 'package:day_manager/components/userProfileCard.dart';
+import 'package:day_manager/pdf.dart';
 import 'package:day_manager/view/homeScreen.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -145,6 +146,7 @@ class MapScreenState extends State<ProfilePage>
                               children: <Widget>[
                                 new Flexible(
                                   child: new TextField(
+                                    keyboardType: TextInputType.name,
                                     controller: nameController,
                                     decoration: const InputDecoration(
                                       hintText: "",
@@ -283,31 +285,47 @@ class MapScreenState extends State<ProfilePage>
     ));
   }
 
-  @override
-  void dispose() {
-    // Clean up the controller when the Widget is disposed
-    myFocusNode.dispose();
-    super.dispose();
-  }
-
+  // Widget _getEditIcon() {
+  //   return new Expanded(
+  //     child: Padding(
+  //       padding: EdgeInsets.only(left: 10.0),
+  //       child: Container(
+  //           child: new RaisedButton(
+  //         child: new Text("เพิ่มข้อมูล"),
+  //         textColor: Colors.white,
+  //         color: Colors.green,
+  //         onPressed: () async {
+  //           await postProfile().then((value) {
+  //             print(value);
+  //             Restart.restartApp();
+  //             setState(() {
+  //               _status = true;
+  //               FocusScope.of(context).requestFocus(new FocusNode());
+  //             });
+  //           });
+  //         },
+  //         shape: new RoundedRectangleBorder(
+  //             borderRadius: new BorderRadius.circular(20.0)),
+  //       )),
+  //     ),
+  //     flex: 2,
+  //   );
+  // }
   Widget _getEditIcon() {
     return new Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 10.0),
         child: Container(
             child: new RaisedButton(
-          child: new Text("เพิ่มข้อมูล"),
+          child: new Text("สร้าง PDF"),
           textColor: Colors.white,
           color: Colors.green,
-          onPressed: () async {
-            await postProfile().then((value) {
-              print(value);
-              Restart.restartApp();
-              setState(() {
-                _status = true;
-                FocusScope.of(context).requestFocus(new FocusNode());
-              });
-            });
+          onPressed: () {
+            var userData = new MaterialPageRoute(
+              builder: (BuildContext contex) =>
+                  PdfPage(name: nameController.text),
+            );
+            // Navigator.of(context).push(userData);
           },
           shape: new RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(20.0)),
@@ -316,21 +334,4 @@ class MapScreenState extends State<ProfilePage>
       flex: 2,
     );
   }
-  // Widget _getEditIcon() {
-  //   return new Expanded(
-  //     child: Padding(
-  //       padding: EdgeInsets.only(left: 10.0),
-  //       child: Container(
-  //           child: new RaisedButton(
-  //         child: new Text("สร้าง PDF"),
-  //         textColor: Colors.white,
-  //         color: Colors.green,
-  //         onPressed: () {},
-  //         shape: new RoundedRectangleBorder(
-  //             borderRadius: new BorderRadius.circular(20.0)),
-  //       )),
-  //     ),
-  //     flex: 2,
-  //   );
-  // }
 }
